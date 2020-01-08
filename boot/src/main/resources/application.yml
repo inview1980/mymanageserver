@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    url: jdbc:mysql://localhost:3306/spring_boot_plus?serverTimezone=GMT
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: sql/schema-user.sql
+    data: sql/data-*.sql
+
+  jpa:
+    show-sql: true
+mybatis-plus:
+  global-config:
+    db-config:
+      table-underline: true
+  type-enums-package: com.boot.enums
