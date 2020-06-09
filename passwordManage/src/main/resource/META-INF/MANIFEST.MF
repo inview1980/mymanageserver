@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: passwordManage.MyWindow
+Class-Path: logback-core-1.2.3.jar slf4j-api-1.7.28.jar commons-lang-2.6
+ .jar commons-compress-1.18.jar logback-classic-1.2.3.jar bcprov-jdk15on
+ -1.56.jar
+
