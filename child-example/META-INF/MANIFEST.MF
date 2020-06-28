@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: src.java.main.Main
-Class-Path: slf4j-api-1.7.26.jar poi-ooxml-3.17.jar txw2-2.3.1.jar stax-
- ex-1.8.jar jaxb-api-2.3.1.jar asm-4.2.jar poi-ooxml-schemas-3.17.jar cu
- rvesapi-1.04.jar ehcache-3.7.1.jar istack-commons-runtime-3.0.7.jar com
- mons-collections4-4.1.jar xmlbeans-2.6.0.jar FastInfoset-1.2.15.jar com
- mons-codec-1.10.jar cglib-3.1.jar poi-3.17.jar jaxb-runtime-2.3.1.jar s
- tax-api-1.0.1.jar easyexcel-2.1.6.jar javax.activation-api-1.2.0.jar
-
