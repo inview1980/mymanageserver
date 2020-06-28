@@ -1,0 +1,12 @@
+${AnsiColor.BLUE}
+ ██                      ██
+
+ ██    █████   ██    ██  ██   █████    ██     ██
+░██   ██   ██ ░██   ░██ ░██  ██   ██   ██  █ ░██
+░██  ░██  ░██ ░░██ ░██  ░██ ░███████  ░██ ███░██
+░██  ░██  ░██  ░░████   ░██ ░██       ░███   ███
+░██   ██  ░██   ░░██    ░██   ██████    █     █
+
+${AnsiColor.YELLOW}      :: Spring Boot ::             ${AnsiColor.WHITE}(v${spring-boot.version})
+${AnsiColor.YELLOW}      :: MyManageServer ::        ${AnsiColor.WHITE}(v${application.version})
+

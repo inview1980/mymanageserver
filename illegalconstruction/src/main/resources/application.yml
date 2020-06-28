@@ -1,17 +1,89 @@
 spring:
+  devtools:
+    restart:
+      enabled: true #热部署生效
+      additional-paths: src/main/java #设置重启的目录
+      exclude: templates/** #文件夹内容修改不重启
+
   datasource:
-    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    name: druidDataSource
     url: jdbc:mysql://localhost:3306/wuhan_illegal_construction?serverTimezone=GMT
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    schema: sql/schema-buildTable.sql
-    data: sql/data-*.sql
+    type: com.alibaba.druid.pool.DruidDataSource
 
-  jpa:
-    show-sql: true
+    druid:
+      filters: stat,wall,slf4j   #去掉后无法监控SQL界面
+      max-active: 100   #最大连接数
+      initial-size: 1   #初始化大小
+      max-wait: 60000   #超时时间
+      min-idle: 1       #最小连接数
+      time-between-eviction-runs-millis: 60000  #检测间隔时间，检测时关闭空的连接，ms
+      min-evictable-idle-time-millis: 300000    #一个连接在池中的最小生存时间
+
+      # 状态监控
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
+        # 监控过滤器
+      web-stat-filter:
+        enabled: true
+        exclusions:
+          - "*.js"
+          - "*.gif"
+          - "*.jpg"
+          - "*.png"
+          - "*.css"
+          - "*.ico"
+          - "/druid/*"
+        # druid 监控页面
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: root
+        login-password: root
+
+    schema: classpath:sql/schema-buildTable.sql
+    schema-username: root
+    schema-password: root
+    data-username: root
+    data-password: root
+    #    initialization-mode: always
+    data: classpath:sql/data-*.sql
+
+  #spring.mvc.static-path-pattern= /static/**
+  #用于告诉Spring Boot应该在何处查找静态资源文件,查找文件时会依赖于配置的先后顺序依次进行
+  resources:
+    static-locations: classpath:/static/,classpath:/view/,classpath:/public,classpath:/resources,classpath:/META-INF/resources
+  thymeleaf:
+    prefix: classpath:/templates/
+#开发阶段，建议关闭thymeleaf的缓存
+    cache: false
+    #使用遗留的html5以去掉对html标签的校验
+#    mode: LEGACYHTML5
+    check-template: true
+    encoding: UTF-8
+    suffix: .html
+
 mybatis-plus:
   global-config:
     db-config:
       table-underline: true
-  type-enums-package: com.wuhan.illegalconstruction.enums
+  #      id-type: input
+  type-enums-package: com.wuhan.illegalconstruction.admin.enums
+  configuration:
+    map-underscore-to-camel-case: true
+logging.level.org.springframework.boot.autoconfigure: ERROR
+
+server:
+  port: 8000
+
+system:
+  user:
+    password:
+      secret: inview
